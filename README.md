@@ -1,7 +1,7 @@
-ABSTRACT
+ABSTRACT:
 This report presents the implementation and evaluation of a search engine for the Cranfield dataset as part of the Dublin City University MSc Computer Science (Artificial Intelligence) program, CA6005 Mechanics of Search Assignment 1. The search engine incorporates three different similarity measures: Cosine Similarity, BM25, and Gensim [4]. The code pre-processes the Cranfield dataset by tokenizing, removing stop words, and stemming text. The search engine then computes the TF-IDF matrix for queries and documents for Cosine Similarity, uses the BM25Okapi implementation for BM25, and Gensim for the third method. The engine retrieves the top 100 similar documents for each query and saves the results in separate text files for further evaluation. This report provides an overview of the evaluation of three text retrieval methods: Cosine Similarity, BM25, and Gensim. The evaluation is conducted using the Dyneval tool, which calculates performance metrics such as Mean Average Precision (MAP), Precision@5 (P@5), and Normalized Discounted Cumulative Gain (NDCG) [5] for each method.
 
-INTRODUCTION
+INTRODUCTION:
 The goal of this project was to implement an information retrieval system for the Cranfield collection dataset. The system is based on the Vector Space Model and implements three different methods for indexing and ranking: cosine similarity, BM25, and Gensim. The Vector Space Model is a widely used technique for information retrieval, where the documents and queries are represented as vectors in a high-dimensional space, and the similarity between them is measured by the cosine of the angle between the vectors.
 The Cranfield dataset is a collection of documents used for information retrieval research. This code performs several pre-processing steps on the dataset to prepare it for further analysis. The first part of the code deletes any existing folders or files and creates new directories to store the pre-processed data. The second part extracts the queries from the XML file and saves them to individual files in a newly created directory. The third part reads in the raw documents from the Cranfield dataset and extracts the document number and text elements, saving them to individual files in a newly created directory. The fourth part pre-processes the query files by removing punctuation and stop words and stemming the remaining words. Finally, the last part initialises a Porter Stemmer Object to create a Tree/Stem Model.
 The code processes both the documents and the queries in the dataset to convert them to a pre-processed format for later use. The pre-processing involves removing stop words, stemming, and converting to lowercase. The pre-processed files are saved in new directories named 'preprocessed_cranfieldDocs' and 'preprocessed_cranfieldQueries'. The code also implements cosine similarity on the pre-processed documents and queries for later use in ranking the relevance of documents to queries.
@@ -12,7 +12,7 @@ The second algorithm is BM25, which is a bag-of-words retrieval model based on t
 The third algorithm uses Latent Semantic Indexing (LSI) to find the relevant documents. LSI is a technique that transforms the original data into a lower-dimensional space and then uses the cosine similarity in the transformed space to calculate document relevance. In this implementation, the pre-processed queries and documents are used to create a dictionary, which is then used to create a corpus. The corpus is then transformed using LSI, and the cosine similarity between the queries and documents is calculated. The top 100 ranked documents are written to a file.
 
 
-INDEXING
+INDEXING:
 Indexing is the process of creating an index for a collection of documents to enable fast retrieval of relevant documents for user queries. The indexing process includes document analysis, pre-processing, indexing construction, and data structures. In this section, we describe the indexing process for the Cranfield collection.
 
 Document analysis: The Cranfield collection consists of documents in SGML format. The documents contain title, author, bibliographic references, and abstract. The first step in the indexing process is to extract the relevant information from the documents. We used Beautiful Soup [1], a Python library, to extract the “docno” and “text” elements from each document and saved them to a new file.
@@ -31,7 +31,7 @@ The cosine similarity method uses the pre-processed documents and queries to cal
 The BM25 method is a more advanced technique that considers the document length, term frequency, and inverse document frequency. This method is known to perform well on long documents and queries.
 The Gensim method uses Latent Semantic Indexing (LSI) to convert the pre-processed documents and queries into a low-dimensional space, where the similarity between them is measured using the cosine similarity metric.
 
-RANKING
+RANKING:
 The ranking component of the system involves the retrieval and ranking of documents based on their similarity to the query. The cosine similarity, BM25[8], and Gensim[11] methods differ in their approach to ranking.
 The cosine similarity method ranks the documents based on their cosine similarity scores with the query. The documents with the highest scores are ranked higher. The system first pre-processes the raw documents and queries by tokenizing them, removing stop words and stemming them to create a list of clean and stemmed tokens[10].
 
@@ -61,7 +61,7 @@ The choice of BM25 and Gensim algorithms for ranking is motivated by their effec
 
 The choice of data structures for indexing and retrieval of documents is also important for efficient search and ranking. In both implementations, the preprocesseddocuments are converted into a bag-of-words format, which allows for efficient indexing and retrieval of documents. The use of a dictionary in the Gensim implementation allows for efficient mapping of terms to their corresponding IDs, which improves the efficiency of the retrieval process.
 
-EVALUATION
+EVALUATION:
 The steps that were taken for generating results from the three evaluation methods are as below:
 Any existing folders and files that may be present were deleted and created new folders to store the output files.
 1. Processing of query files:
@@ -100,7 +100,7 @@ However, there are a few things that could be improved in the code in future. Fo
 In terms of extending this work in the future, one possibility would be to incorporate additional pre-processing steps, such as part-of-speech tagging or named entity recognition, to further improve the quality of the pre-processed data. Additionally, the pre-processed data could be used to train machine learning models for information retrieval, such as deep neural networks or transformer-based models like BERT. The code could also be modified to include additional pre-processing steps, such as removing numbers or certain parts of speech. It could be improved by adding more pre-processing steps such as removing numerical data and special characters. The code could also be extended to include additional models for text analysis or search, such as deep learning models or clustering algorithms. Finally, the code could be used as a starting point for building a full-text search engine. The code could also be modified to support other datasets or information retrieval tasks.
 
 
-REFERENCES
+REFERENCES:
 [1] Beautiful Soup, "Beautiful Soup: We called him Tortoise because he taught us," https://www.crummy.com/software/BeautifulSoup/bs4/doc
 [2] Python Software Foundation, "Python 3.8.5 documentation," https://docs.python.org/3/
 [3] NLTK Project, "Natural Language Toolkit," https://www.nltk.org/
